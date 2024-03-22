@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://d7jq4jpmk4sl"]
+
+[ext_resource type="Texture2D" uid="uid://boh5dacoe2tld" path="res://oak_woods_v1.0/MonedaD.png" id="1_121ge"]
+[ext_resource type="Script" path="res://Collectibles/gold.gd" id="1_yhx1h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6wbw7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smvvi"]
+atlas = ExtResource("1_121ge")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8fw2"]
+atlas = ExtResource("1_121ge")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8bhq"]
+atlas = ExtResource("1_121ge")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xaajt"]
+atlas = ExtResource("1_121ge")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4ayk"]
+atlas = ExtResource("1_121ge")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1x6pn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smvvi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8fw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8bhq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xaajt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4ayk")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}]
+
+[node name="Gold" type="Area2D"]
+script = ExtResource("1_yhx1h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6wbw7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.19209e-07, -2.84217e-14)
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_1x6pn")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.393808
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
